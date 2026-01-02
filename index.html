@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Anish Pangeni">
+    <meta name="description" content="UK E-Sports League - Professional gaming platform by Anish Pangeni">
+    <title>UK E-Sports League - Home | Anish Pangeni</title>
+    <link rel="stylesheet" href="style.css?v=5.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Homepage Specific Enhancements */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('/Users/anishisgreat/.gemini/antigravity/brain/739b67bd-a758-4446-9dc5-1d41399ae469/esports_hero_wallpaper_1767371289202.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Overlay for better text readability */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(239, 246, 255, 0.9) 100%);
+            z-index: 1;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-character-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 20px 40px rgba(37, 99, 235, 0.4));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(30, 64, 175, 0.1), 0 8px 10px -6px rgba(30, 64, 175, 0.1);
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        .floating-card:nth-child(1) {
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-card:nth-child(2) {
+            top: 50%;
+            right: 30%;
+            animation-delay: 2s;
+        }
+
+        .floating-card:nth-child(3) {
+            bottom: 10%;
+            right: 5%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatCard {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            color: #2563EB;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #1E40AF, #2563EB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title p {
+            color: #6B7684;
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(30, 64, 175, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(30, 64, 175, 0.2);
+        }
+
+        .team-image {
+            height: 200px;
+            background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(37, 99, 235, 0.1));
+        }
+
+        .team-info {
+            padding: 1.5rem;
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1A202C;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-location {
+            color: #6B7684;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-stats {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 1rem;
+            border-top: 1px solid #E8ECEF;
+        }
+
+        .team-stat {
+            text-align: center;
+        }
+
+        .team-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563EB;
+        }
+
+        .team-stat-label {
+            font-size: 0.75rem;
+            color: #6B7684;
+            text-transform: uppercase;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #1E40AF, #2563EB);
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-white {
+            background: white;
+            color: #2563EB;
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-gamepad"></i>
+                <span>UK E-Sports League</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="search_form.php">Search</a></li>
+                <li><a href="register_form.html">Merchandise</a></li>
+                <li><a href="admin_login.html">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-user-graduate"></i>
+                        <div>
+                            <div class="hero-badge-text">Anish Pangeni</div>
+                            <div class="hero-badge-subtext">Student ID: bi95sn | ISMT Butwal</div>
+                        </div>
+                    </div>
+
+                    <h1>Compete in the UK's Premier E-Sports League</h1>
+                    <p>Join thousands of players, compete in tournaments, and win exclusive prizes. Your journey to
+                        becoming a professional gamer starts here.</p>
+
+                    <div class="hero-cta">
+                        <a href="register.php" class="btn btn-primary">
+                            <i class="fas fa-trophy"></i>
+                            Join Tournament
+                        </a>
+                        <a href="register_form.html" class="btn btn-secondary">
+                            <i class="fas fa-shopping-cart"></i>
+                            Free Merch
+                        </a>
+                        <a href="#" class="btn btn-white" style="color: #2563EB;">
+                            <i class="fas fa-play"></i>
+                            Watch Demo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <img src="photos/hero-character.png" alt="E-Sports Pro Character" class="hero-character-img">
+                    <div class="floating-card">
+                        <div class="card-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div style="font-weight: 700; color: #1A202C;">Win Prizes</div>
+                        <div style="font-size: 0.875rem; color: #6B7684;">Compete & Earn</div>
+                    </div>
+                    <div class="floating-card">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div style="font-weight: 700; color: #1A202C;">30+ Players</div>
+                        <div style="font-size: 0.875rem; color: #6B7684;">Active Community</div>
+                    </div>
+                    <div class="floating-card">
+                        <div class="card-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <div style="font-weight: 700; color: #1A202C;">Free Merch</div>
+                        <div style="font-size: 0.875rem; color: #6B7684;">For Members</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">30+</div>
+                <div class="stat-label">Active Players</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Pro Teams</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Free Merch</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teams Section -->
+    <section class="container" style="padding: 4rem 0;">
+        <div class="section-title">
+            <h2>Our Pro Teams</h2>
+            <p>Meet the elite teams competing in the UK E-Sports League</p>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-image">
+                    <i class="fas fa-star" style="color: #2563EB;"></i>
+                </div>
+                <div class="team-info">
+                    <div class="team-name">NovaCore</div>
+                    <div class="team-location">
+                        <i class="fas fa-map-marker-alt" style="color: #3B82F6;"></i>
+                        Sunderland
+                    </div>
+                    <div class="team-stats">
+                        <div class="team-stat">
+                            <div class="team-stat-value">15</div>
+                            <div class="team-stat-label">Players</div>
+                        </div>
+                        <div class="team-stat">
+                            <div class="team-stat-value">12</div>
+                            <div class="team-stat-label">Wins</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-image">
+                    <i class="fas fa-bolt" style="color: #2563EB;"></i>
+                </div>
+                <div class="team-info">
+                    <div class="team-name">IronWolves</div>
+                    <div class="team-location">
+                        <i class="fas fa-map-marker-alt" style="color: #3B82F6;"></i>
+                        Newcastle
+                    </div>
+                    <div class="team-stats">
+                        <div class="team-stat">
+                            <div class="team-stat-value">6</div>
+                            <div class="team-stat-label">Players</div>
+                        </div>
+                        <div class="team-stat">
+                            <div class="team-stat-value">8</div>
+                            <div class="team-stat-label">Wins</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-image">
+                    <i class="fas fa-fire" style="color: #2563EB;"></i>
+                </div>
+                <div class="team-info">
+                    <div class="team-name">PulseForge</div>
+                    <div class="team-location">
+                        <i class="fas fa-map-marker-alt" style="color: #3B82F6;"></i>
+                        Middlesbrough
+                    </div>
+                    <div class="team-stats">
+                        <div class="team-stat">
+                            <div class="team-stat-value">3</div>
+                            <div class="team-stat-label">Players</div>
+                        </div>
+                        <div class="team-stat">
+                            <div class="team-stat-value">5</div>
+                            <div class="team-stat-label">Wins</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-image">
+                    <i class="fas fa-shield-alt" style="color: #2563EB;"></i>
+                </div>
+                <div class="team-info">
+                    <div class="team-name">ShadowRift</div>
+                    <div class="team-location">
+                        <i class="fas fa-map-marker-alt" style="color: #3B82F6;"></i>
+                        Durham
+                    </div>
+                    <div class="team-stats">
+                        <div class="team-stat">
+                            <div class="team-stat-value">6</div>
+                            <div class="team-stat-label">Players</div>
+                        </div>
+                        <div class="team-stat">
+                            <div class="team-stat-value">10</div>
+                            <div class="team-stat-label">Wins</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Join Us?</h2>
+                <p>Everything you need to succeed in competitive gaming</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy" style="color: #3B82F6;"></i>
+                    </div>
+                    <h3>Compete & Win</h3>
+                    <p>Join tournaments and compete with the best players across the UK. Showcase your skills and climb
+                        the leaderboards to earn recognition.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gift" style="color: #2563EB;"></i>
+                    </div>
+                    <h3>Exclusive Rewards</h3>
+                    <p>Register your interest to receive exclusive free merchandise and rewards. Limited edition items
+                        for our community members.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users" style="color: #1D4ED8;"></i>
+                    </div>
+                    <h3>Join Community</h3>
+                    <p>Connect with fellow gamers and build your esports network. Team up and dominate the competition
+                        together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Project & Developer Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Behind the League</h2>
+                <p>Get to know the project and the developer</p>
+            </div>
+
+            <div class="about-grid">
+                <!-- Project Info -->
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>About the Project</h3>
+                    <p>The UK E-Sports League is a comprehensive tournament platform built as a university assignment.
+                        It features a custom PHP backend, MySQL database integration for player management, and a
+                        responsive frontend design.</p>
+                    <ul class="tech-stack">
+                        <li><i class="fab fa-html5"></i> HTML5</li>
+                        <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                        <li><i class="fab fa-php"></i> PHP</li>
+                        <li><i class="fas fa-database"></i> MySQL</li>
+                    </ul>
+                    <a href="https://github.com/vivaanish" target="_blank" class="btn-link">
+                        View on GitHub <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Developer Info -->
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-user-code"></i>
+                    </div>
+                    <h3>About the Developer</h3>
+                    <p>Hi, I am <strong>Anish Pangeni</strong>, a Computing student at ISMT Butwal, affiliated with the
+                        University of Sunderland, UK. I am passionate about full-stack development and creating
+                        immersive web experiences.</p>
+                    <div class="developer-stats">
+                        <div class="dev-stat">
+                            <span class="value">bi95sn</span>
+                            <span class="label">Student ID</span>
+                        </div>
+                        <div class="dev-stat">
+                            <span class="value">2026</span>
+                            <span class="label">Class Of</span>
+                        </div>
+                    </div>
+                    <div class="social-links-row">
+                        <a href="https://www.linkedin.com/in/anishisgreat/" target="_blank"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/vivaanish" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://x.com/anishisgreatt" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://anishpangeni.com" target="_blank"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Level Up?</h2>
+                <p>Join the UK's most competitive e-sports league and start your journey today</p>
+                <a href="register_form.html" class="btn-white">
+                    <i class="fas fa-rocket"></i>
+                    Get Started Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Student Information</h3>
+                    <p><strong>Name:</strong> Anish Pangeni</p>
+                    <p><strong>Email:</strong> bwit24d.anh@ismt.edu.np</p>
+                    <p><strong>Student ID:</strong> bi95sn</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="https://github.com/vivaanish" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/anishisgreat/" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://x.com/anishisgreatt" target="_blank" title="Twitter/X">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/anishisgreat/" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>College Details</h3>
+                    <p><strong>Institution:</strong> ISMT Butwal, Nepal</p>
+                    <p><strong>Affiliated University:</strong> <a href="https://www.sunderland.ac.uk/" target="_blank"
+                            style="color: #3B82F6; text-decoration: none; font-weight: 600;">University of Sunderland,
+                            UK</a></p>
+                    <p><strong>Program:</strong> BSc (Hons) Computing</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="https://www.sunderland.ac.uk/study/undergraduate/" target="_blank"
+                            title="Undergraduate Programs">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://en.wikipedia.org/wiki/University_of_Sunderland" target="_blank"
+                            title="Wikipedia">
+                            <i class="fab fa-wikipedia-w"></i>
+                        </a>
+                        <a href="https://www.facebook.com/sunderlanduniversity/" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/sunderlanduni/" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="search_form.php">Search Players</a>
+                    <a href="register_form.html">Merchandise</a>
+                    <a href="admin_login.html">Admin Portal</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 UK E-Sports League. Created by Anish Pangeni.</p>
+                <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.875rem; margin-top: 0.5rem;">ISMT Butwal |
+                    University of Sunderland, UK</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Minimal Cart Test</title>
+</head>
+
+<body>
+    <h1>Minimal Cart Test</h1>
+    <button onclick="addToCart(0)">Test Add to Cart</button>
+    <div id="result"></div>
+
+    <script>
+        console.log('Script starting...');
+
+        const products = [
+            { name: 'Test Product', price: 10.99 }
+        ];
+
+        let cart = [];
+
+        function addToCart(index) {
+            console.log('addToCart called with index:', index);
+            const product = products[index];
+            cart.push(product);
+            document.getElementById('result').innerHTML = `<p>Added: ${product.name} - Cart has ${cart.length} items</p>`;
+            alert('Added to cart!');
+        }
+
+        console.log('Script loaded. typeof addToCart:', typeof addToCart);
+    </script>
+</body>
+
+</html>
